@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { loginUrl, registerUrl, getOrdersUrl, getUserPortfolioUrl } from 'src/constants/environment';
+import { loginUrl, registerUrl, getMarketDataUrl, getUserPortfolioUrl, placeOrderUrl } from 'src/constants/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,16 +20,16 @@ export class AuthServiceService {
     return this.http.post(`${registerUrl}`, data); 
   }
 
-  getOrdersService(){
+  getMarketDataService(){
     console.log("In Get Orders");
-    return this.http.get(`${getOrdersUrl}`);
+    return this.http.get(`${getMarketDataUrl}`);
   }
 
-  tradeStock(){
+  tradeStock(data: any):Observable<any>{
     console.log("In Trade Stock");
-
-    // This is wrong but will fix it.
-    return this.http.get(`${getOrdersUrl}`);
+    console.log(data);
+    console.log(data);
+    return this.http.post(`${placeOrderUrl}`, data);
   }
 
   getUserPortfolio(){

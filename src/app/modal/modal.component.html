@@ -17,16 +17,16 @@
     </div>
   </div>
   <div class="card-body">
-    <form role="form" [formGroup]="tradeFormGroup">
+    <form role="form" [formGroup]="tradeFormGroup" (ngSubmit)="makeTrade()">
       <label>Product</label>
       <div class="mb-3">
         <input
-          type="email"
+          type="text"
           class="form-control"
-          value="{{ portfolioName }}"
-          placeholder="{{ portfolioName }}"
+          value="{{portfolioName}}"
+          placeholder="{{portfolioName}}"
           aria-label="Product"
-          aria-describedby="email-addon"
+          aria-describedby="text-addon"
           formControlName="product"
         />
       </div>

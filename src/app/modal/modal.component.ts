@@ -10,15 +10,6 @@ import { AuthServiceService } from '../auth-service.service';
 })
 export class ModalComponent implements OnInit{
 
-  tradeFormGroup = new FormGroup({
-    product: new FormControl(""),
-    quantity: new FormControl(""),
-    price: new FormControl(""),
-    side: new FormControl(""),
-    type: new FormControl(""),
-    portfolio: new FormControl("")
-  });
-
   portfolio: any = [];
   portfolios: any = [];
   portfolioName?: String;
@@ -27,8 +18,41 @@ export class ModalComponent implements OnInit{
     this.portfolioName = data.name
   }
 
+  tradeFormGroup = new FormGroup({
+    product: new FormControl({value: this.data.name, disabled: false}),
+    quantity: new FormControl(""),
+    price: new FormControl(""),
+    side: new FormControl(""),
+    type: new FormControl(""),
+    portfolio: new FormControl("")
+  });
+
   ngOnInit(): void {
     this.getUserPortfolio();
+  }
+
+  makeTrade(){
+    console.log("In Make Trade");
+    console.log(this.tradeFormGroup.value);
+    console.log(this.tradeFormGroup.value.product);
+    console.log(this.tradeFormGroup.value.portfolio);
+
+    if(this.tradeFormGroup.valid){
+      this.authService.tradeStock(this.tradeFormGroup.value).subscribe(result => {
+        console.log("I got a response.");
+        if(result.status == "00"){
+          console.log(result);
+          console.log("We have traded");
+        } else {
+          console.log(result.message);
+          alert(result.message);
+        }
+      })
+    } else {
+      console.log("You tricked me.")
+    }
+    
+
   }
 
 

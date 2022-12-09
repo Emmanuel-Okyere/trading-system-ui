@@ -13,6 +13,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ModalComponent } from './modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MarketdataComponent } from './marketdata/marketdata.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     DashboardComponent,
     ProfileComponent,
     OrdersComponent,
-    ModalComponent
+    ModalComponent,
+    MarketdataComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
