@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit{
       });
     } else {
       console.log("You tricked me.")
+      alert("Fields can not be empty");
+
     }
   }
 

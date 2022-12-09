@@ -24,7 +24,7 @@ export class ModalComponent implements OnInit{
     price: new FormControl(""),
     side: new FormControl(""),
     type: new FormControl(""),
-    portfolio: new FormControl("")
+    portfolioId: new FormControl("")
   });
 
   ngOnInit(): void {
@@ -35,14 +35,16 @@ export class ModalComponent implements OnInit{
     console.log("In Make Trade");
     console.log(this.tradeFormGroup.value);
     console.log(this.tradeFormGroup.value.product);
-    console.log(this.tradeFormGroup.value.portfolio);
+    console.log(this.tradeFormGroup.value.portfolioId);
 
     if(this.tradeFormGroup.valid){
       this.authService.tradeStock(this.tradeFormGroup.value).subscribe(result => {
         console.log("I got a response.");
         if(result.status == "00"){
           console.log(result);
+          alert(result.message);
           console.log("We have traded");
+          window.location.href = '/marketdata';
         } else {
           console.log(result.message);
           alert(result.message);
@@ -50,8 +52,9 @@ export class ModalComponent implements OnInit{
       })
     } else {
       console.log("You tricked me.")
+      alert("Inputs can not be empty")
     }
-    
+
 
   }
 

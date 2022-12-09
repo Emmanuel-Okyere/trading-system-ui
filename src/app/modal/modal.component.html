@@ -28,7 +28,7 @@
           aria-label="Product"
           aria-describedby="text-addon"
           formControlName="product"
-        />
+          required/>
       </div>
       <label>Quantity</label>
       <div class="mb-3">
@@ -39,6 +39,7 @@
           aria-label="text"
           aria-describedby="text-addon"
           formControlName="quantity"
+          required
         />
       </div>
       <label>Price</label>
@@ -50,32 +51,33 @@
           aria-label="text"
           aria-describedby="text-addon"
           formControlName="price"
+          required
         />
       </div>
       <div class="mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Side</label>
-          <select class="form-control" formControlName="side" id="exampleFormControlSelect1">
+          <select required class="form-control" formControlName="side" id="exampleFormControlSelect1">
             <option disabled selected>Choose...</option>
-            <option value="Buy">Buy</option>
-            <option value="Sell">Sell</option>
+            <option value="BUY">Buy</option>
+            <option value="SELL">Sell</option>
           </select>
         </div>
       </div>
       <div class="mb-3">
         <div class="form-group">
           <label for="exampleFormControlSelect1">Type</label>
-          <select class="form-control" formControlName="type" id="exampleFormControlSelect1">
+          <select required class="form-control" formControlName="type" id="exampleFormControlSelect1">
             <option disabled selected>Choose...</option>
-            <option value="Market">Market</option>
-            <option value="Limit">Limit</option>
+            <option value="MARKET">Market</option>
+            <option value="LIMIT">Limit</option>
           </select>
         </div>
       </div>
       <div class="mb-3">
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Portfolio</label>
-                <select class="form-control" formControlName="portfolio" id="exampleFormControlSelect1">
+                <select required class="form-control" formControlName="portfolioId" id="exampleFormControlSelect1" >
                   <option disabled selected>Choose...</option>
                   <option value="{{item.id}}" *ngFor="let item of portfolios" >{{item.ticker}}</option>
                 </select>

@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit{
       });
     } else {
       console.log("You tricked me.")
+      alert("Fields can not be empty");
     }
   }
 

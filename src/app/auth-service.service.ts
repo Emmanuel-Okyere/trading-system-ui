@@ -9,15 +9,15 @@ import { loginUrl, registerUrl, getMarketDataUrl, getUserPortfolioUrl, placeOrde
 export class AuthServiceService {
 
   constructor(private http:HttpClient) {}
-  
+
   login(data: any):Observable<any>{
     console.log("In Login");
-    return this.http.post(`${loginUrl}`, data); 
+    return this.http.post(`${loginUrl}`, data);
   }
 
   register(data: any):Observable<any>{
     console.log("In Register");
-    return this.http.post(`${registerUrl}`, data); 
+    return this.http.post(`${registerUrl}`, data);
   }
 
   getMarketDataService(){
@@ -28,8 +28,15 @@ export class AuthServiceService {
   tradeStock(data: any):Observable<any>{
     console.log("In Trade Stock");
     console.log(data);
-    console.log(data);
-    return this.http.post(`${placeOrderUrl}`, data);
+    const sessionData = sessionStorage.getItem('accessToken');
+    console.log(sessionData);
+
+    let headers = ({
+      'Authorization': 'Bearer ' + sessionData,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+    });
+    return this.http.post(`${placeOrderUrl}`, data,{ headers: headers });
   }
 
   getUserPortfolio(){
