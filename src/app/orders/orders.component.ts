@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthServiceService } from '../auth-service.service';
 import { ModalComponent } from '../modal/modal.component';
-
+import {PortfolioComponent} from "../portfolio/portfolio.component";
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -10,26 +10,21 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class OrdersComponent implements OnInit{
   constructor(private authService: AuthServiceService, private dialogRef : MatDialog){}
-
-  orders: any = [];
-
+  userDetails?:any = [];
+  orders:any= PortfolioComponent.orders;
   ngOnInit() {
-    this.getOrders();
+    console.log("***************************11")
+    this.getUserDetails();
   }
 
-  getOrders(){
-    this.authService.getMarketDataService().subscribe(results => {
-      this.orders = results;
-      console.log(this.orders);
-    });
-  }
-
-  openDialog(item: any){
-    console.log(item);
-    console.log("-------------");
-    this.dialogRef.open(ModalComponent, {
-      data : {name : item}
-    });
+  getUserDetails(){
+    console.log("Getting user's details");
+    const userEmail = sessionStorage.getItem("userEmail");
+    const userName = sessionStorage.getItem("userName");
+    const userBalance = sessionStorage.getItem("userBalance");
+    const userRole = sessionStorage.getItem("userRole");
+    this.userDetails.push(userEmail,userName,userBalance);
+    console.log(this.userDetails);
   }
 
 }

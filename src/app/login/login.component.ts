@@ -27,7 +27,11 @@ export class LoginComponent implements OnInit{
       this.authService.login(this.loginFormGroup.value).subscribe(result => {
         console.log("I am here...");
         if(result.status == "00"){
-          sessionStorage.setItem('userDetails', JSON.stringify(result));
+          sessionStorage.setItem('userId', result.data.id);
+          sessionStorage.setItem('userEmail', result.data.email);
+          sessionStorage.setItem('userName', result.data.name);
+          sessionStorage.setItem('userBalance', result.data.balance);
+          sessionStorage.setItem('userRole', result.data.roles[0]);
           sessionStorage.setItem('accessToken', result.accessToken);
           window.location.href = '/dashboard';
           // We will redirect the page to go to the dashboard page.

@@ -11,12 +11,16 @@ export class PortfolioComponent {
   portfolio: any = [];
   portfolios: any = [];
   portfolioName?: String;
+  userDetails?:any = [];
+  static order?:any;
+  static orders?:any;
 
   constructor(private authService: AuthServiceService){
   }
 
   ngOnInit(): void {
     this.getUserPortfolio();
+    this.getUserDetails();
   }
 
   getUserPortfolio(){
@@ -30,7 +34,26 @@ export class PortfolioComponent {
     });
   }
 
-  getOrders() {
+  getUserDetails(){
+    console.log("Getting user's details");
+     const userEmail = sessionStorage.getItem("userEmail");
+     const userName = sessionStorage.getItem("userName");
+    const userBalance = sessionStorage.getItem("userBalance");
+    const userRole = sessionStorage.getItem("userRole");
+    this.userDetails.push(userEmail,userName,userBalance);
+    console.log(this.userDetails);
+  }
+
+  getOrders(item: any) {
     console.log("Come and see me");
+    console.log("Getting you order for this portfolio");
+    console.log("Haaaayyyy**** "+ item.id);
+    this.authService.getPortfolioOrders(item.id).subscribe(results => {
+      PortfolioComponent.order = results;
+      PortfolioComponent.orders = PortfolioComponent.order.data;
+      console.log("poooolll");
+      console.log(PortfolioComponent.orders);
+      console.log("oojsdifsadf");
+    });
   }
 }

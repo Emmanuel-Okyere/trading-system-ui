@@ -11,16 +11,17 @@ import { ModalComponent } from '../modal/modal.component';
 export class MarketdataComponent {
   constructor(private authService: AuthServiceService, private dialogRef : MatDialog){}
 
-  orders: any = [];
-
+  marketData: any = [];
+  userDetails?:any = [];
   ngOnInit() {
     this.getMarketData();
+    this.getUserDetails();
   }
 
   getMarketData(){
     this.authService.getMarketDataService().subscribe(results => {
-      this.orders = results;
-      console.log(this.orders);
+      this.marketData = results;
+      console.log(this.marketData);
     });
   }
 
@@ -30,6 +31,15 @@ export class MarketdataComponent {
     this.dialogRef.open(ModalComponent, {
       data : {name : item}
     });
+  }
+  getUserDetails(){
+    console.log("Getting user's details");
+    const userEmail = sessionStorage.getItem("userEmail");
+    const userName = sessionStorage.getItem("userName");
+    const userBalance = sessionStorage.getItem("userBalance");
+    const userRole = sessionStorage.getItem("userRole");
+    this.userDetails.push(userEmail,userName,userBalance);
+    console.log(this.userDetails);
   }
 
 }

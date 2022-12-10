@@ -285,54 +285,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link active" routerLink="/orders">
-          <div
-            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
-          >
-            <svg
-              width="12px"
-              height="12px"
-              viewBox="0 0 42 42"
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-            >
-              <title>office</title>
-              <g
-                stroke="none"
-                stroke-width="1"
-                fill="none"
-                fill-rule="evenodd"
-              >
-                <g
-                  transform="translate(-1869.000000, -293.000000)"
-                  fill="#FFFFFF"
-                  fill-rule="nonzero"
-                >
-                  <g transform="translate(1716.000000, 291.000000)">
-                    <g
-                      id="office"
-                      transform="translate(153.000000, 2.000000)"
-                    >
-                      <path
-                        class="color-background opacity-6"
-                        d="M12.25,17.5 L8.75,17.5 L8.75,1.75 C8.75,0.78225 9.53225,0 10.5,0 L31.5,0 C32.46775,0 33.25,0.78225 33.25,1.75 L33.25,12.25 L29.75,12.25 L29.75,3.5 L12.25,3.5 L12.25,17.5 Z"
-                      ></path>
-                      <path
-                        class="color-background"
-                        d="M40.25,14 L24.5,14 C23.53225,14 22.75,14.78225 22.75,15.75 L22.75,38.5 L19.25,38.5 L19.25,22.75 C19.25,21.78225 18.46775,21 17.5,21 L1.75,21 C0.78225,21 0,21.78225 0,22.75 L0,40.25 C0,41.21775 0.78225,42 1.75,42 L40.25,42 C41.21775,42 42,41.21775 42,40.25 L42,15.75 C42,14.78225 41.21775,14 40.25,14 Z M12.25,36.75 L7,36.75 L7,33.25 L12.25,33.25 L12.25,36.75 Z M12.25,29.75 L7,29.75 L7,26.25 L12.25,26.25 L12.25,29.75 Z M35,36.75 L29.75,36.75 L29.75,33.25 L35,33.25 L35,36.75 Z M35,29.75 L29.75,29.75 L29.75,26.25 L35,26.25 L35,29.75 Z M35,22.75 L29.75,22.75 L29.75,19.25 L35,19.25 L35,22.75 Z"
-                      ></path>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </svg>
-          </div>
-          <span class="nav-link-text ms-1">Orders</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/portfolio">
+        <a class="nav-link active" routerLink="/portfolio">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
           >
@@ -379,11 +332,11 @@
         <h6
           class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
         >
-          Account pages
+          User Infomation
         </h6>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/profile">
+      <li class="nav-item" *ngFor="let userDetail of userDetails " >
+        <a class="nav-link">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center"
           >
@@ -427,7 +380,7 @@
               </g>
             </svg>
           </div>
-          <span class="nav-link-text ms-1">Profile</span>
+          <span class="nav-link-text ms-1">{{userDetail}}</span>
         </a>
       </li>
     </ul>
@@ -493,78 +446,59 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Portfolios</h6>
+            <h2>Orders</h2>
           </div>
           <div class="card-body px-0 pt-0 pb-2">
             <div class="table-responsive p-0">
               <table class="table align-items-center mb-0">
                 <thead>
                 <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
+                  <th class="text-uppercase text-secondary text-l font-weight-bolder opacity-7">Ticker</th>
+                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Order Id</th>
+                  <th class="text-uppercase text-secondary text-l font-weight-bolder opacity-7 ps-2">Quantity</th>
+                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Status</th>
+                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Price</th>
+                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Type</th>
+                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Side</th>
+                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Created At</th>
                   <th class="text-secondary opacity-7"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr *ngFor="let order of orders">
                   <td>
                     <div class="d-flex px-2 py-1">
                       <div>
-                        <img src="https://demos.creative-tim.com/soft-ui-dashboard/assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                        <img src="https://icons.iconarchive.com/icons/matiasam/ios7-style/512/Stock-icon.png" class="avatar avatar-sm me-3" alt="user1">
                       </div>
                       <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">John Michael</h6>
-                        <p class="text-xs text-secondary mb-0"><a href="https://demos.creative-tim.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="741e1b1c1a3417061115001d021159001d195a171b19">[email&#160;protected]</a></p>
+                        <h6 class="mb-0 text-sm">{{order.product}}</h6>
                       </div>
                     </div>
                   </td>
                   <td>
-                    <p class="text-xs font-weight-bold mb-0">Manager</p>
-                    <p class="text-xs text-secondary mb-0">Organization</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="badge badge-sm bg-gradient-success">Online</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                  </td>
-                  <td class="align-middle">
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                      Edit
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="d-flex px-2 py-1">
-                      <div>
-                        <img src="https://demos.creative-tim.com/soft-ui-dashboard/assets/img/team-3.jpg" class="avatar avatar-sm me-3" alt="user2">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                        <p class="text-xs text-secondary mb-0"><a href="https://demos.creative-tim.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9dfcf1f8e5fcddfeeff8fce9f4ebf8b0e9f4f0b3fef2f0">[email&#160;protected]</a></p>
-                      </div>
-                    </div>
+                    <p class="text-xs font-weight-bold mb-0">{{order.orderId}}</p>
                   </td>
                   <td>
-                    <p class="text-xs font-weight-bold mb-0">Programator</p>
-                    <p class="text-xs text-secondary mb-0">Developer</p>
+                    <p class="text-xs font-weight-bold mb-0">{{order.quantity}}</p>
                   </td>
                   <td class="align-middle text-center text-sm">
-                    <span class="badge badge-sm bg-gradient-secondary">Offline</span>
+                    <span *ngIf="order.orderStatus==='open'" class="badge badge-sm bg-gradient-success">{{order.orderStatus}}</span>
+                    <span *ngIf="order.orderStatus==='close'" class="badge badge-sm bg-gradient-secondary">{{order.orderStatus}}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
+                    <span class="text-secondary text-xs font-weight-bold">${{order.price}}</span>
                   </td>
-                  <td class="align-middle">
-                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                      Edit
-                    </a>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{order.type}}</span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{order.side}}</span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">{{order.createdAt}}</span>
                   </td>
                 </tr>
-
                 </tbody>
               </table>
             </div>
