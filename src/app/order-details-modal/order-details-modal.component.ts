@@ -15,7 +15,8 @@ export class OrderDetailsModalComponent  {
   }
 
   ngOnInit(): void {
-    this.getOrdersByID(this.data.orderId);}
+    this.getOrdersByID(this.data.orderId);
+  }
 
   getOrdersByID(orderId:string){
     console.log("Come and see me");
