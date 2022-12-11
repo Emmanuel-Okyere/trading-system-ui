@@ -15,6 +15,8 @@ import { ModalComponent } from './modal/modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MarketdataComponent } from './marketdata/marketdata.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import {MatTableModule} from '@angular/material/table';
+import { OrderDetailsModalComponent } from './order-details-modal/order-details-modal.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     OrdersComponent,
     ModalComponent,
     MarketdataComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    OrderDetailsModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

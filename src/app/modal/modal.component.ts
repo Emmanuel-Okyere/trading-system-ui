@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthServiceService } from '../auth-service.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-modal',
@@ -14,7 +15,7 @@ export class ModalComponent implements OnInit{
   portfolios: any = [];
   portfolioName?: String;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private authService: AuthServiceService){
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dialogRef: MatDialog, private authService: AuthServiceService){
     this.portfolioName = data.name
   }
 
@@ -30,7 +31,6 @@ export class ModalComponent implements OnInit{
   ngOnInit(): void {
     this.getUserPortfolio();
   }
-
   makeTrade(){
     console.log("In Make Trade");
     console.log(this.tradeFormGroup.value);
@@ -44,7 +44,7 @@ export class ModalComponent implements OnInit{
           console.log(result);
           alert(result.message);
           console.log("We have traded");
-          window.location.href = '/marketdata';
+          this.dialogRef.closeAll();
         } else {
           console.log(result.message);
           alert(result.message);

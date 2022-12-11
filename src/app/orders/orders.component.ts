@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthServiceService } from '../auth-service.service';
 import { ModalComponent } from '../modal/modal.component';
 import {PortfolioComponent} from "../portfolio/portfolio.component";
+import {OrderDetailsModalComponent} from "../order-details-modal/order-details-modal.component";
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -27,4 +28,10 @@ export class OrdersComponent implements OnInit{
     console.log(this.userDetails);
   }
 
-}
+  openDialog(orderId:string) {
+    console.log(orderId);
+    console.log("-------------");
+    this.dialogRef.open(OrderDetailsModalComponent, {
+      data : {orderId : orderId}});
+  }
+  }

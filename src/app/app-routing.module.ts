@@ -7,6 +7,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import {OrderDetailsModalComponent} from "./order-details-modal/order-details-modal.component";
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path:'orders', component: OrdersComponent},
   {path:'dashboard', component: DashboardComponent},
   {path:'marketdata', component: MarketdataComponent},
-  {path:'portfolio', component: PortfolioComponent}
+  {path:'portfolio', component: PortfolioComponent},
 ];
 
 @NgModule({
