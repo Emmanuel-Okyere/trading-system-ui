@@ -17,6 +17,7 @@ import { MarketdataComponent } from './marketdata/marketdata.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import {MatTableModule} from '@angular/material/table';
 import { OrderDetailsModalComponent } from './order-details-modal/order-details-modal.component';
+import { CreatePortfolioComponent } from './create-portfolio/create-portfolio.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { OrderDetailsModalComponent } from './order-details-modal/order-details-
     MarketdataComponent,
     PortfolioComponent,
     OrderDetailsModalComponent,
+    CreatePortfolioComponent,
   ],
   imports: [
     BrowserModule,

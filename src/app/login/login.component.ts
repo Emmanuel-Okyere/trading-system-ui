@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit{
           sessionStorage.setItem('userBalance', result.data.balance);
           sessionStorage.setItem('userRole', result.data.roles[0]);
           sessionStorage.setItem('accessToken', result.accessToken);
-          window.location.href = '/dashboard';
+          window.location.href = '/marketdata';
           // We will redirect the page to go to the dashboard page.
           console.log("We printed");
            console.log(result);

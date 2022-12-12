@@ -1,7 +1,8 @@
 import {Component, Inject} from '@angular/core';
-import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
 import {AuthServiceService} from "../auth-service.service";
 import {ModalComponent} from "../modal/modal.component";
+import {CreatePortfolioComponent} from "../create-portfolio/create-portfolio.component";
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -14,8 +15,11 @@ export class PortfolioComponent {
   userDetails?:any = [];
   static order?:any;
   static orders?:any;
+  createPortfolio(){
+    this.dialogRef.open(CreatePortfolioComponent);
+  }
 
-  constructor(private authService: AuthServiceService){
+  constructor(private authService: AuthServiceService,private dialogRef : MatDialog){
   }
 
   ngOnInit(): void {

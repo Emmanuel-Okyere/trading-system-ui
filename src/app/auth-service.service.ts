@@ -7,8 +7,9 @@ import {
   getMarketDataUrl,
   getUserPortfolioUrl,
   placeOrderUrl,
-  getUsersOrders, getOrderById, cancelOrder
+  getUsersOrders, getOrderById, cancelOrder, createPortfolio
 } from 'src/constants/environment';
+import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
@@ -134,5 +135,22 @@ export class AuthServiceService {
 
     return this.http.delete(`${cancelOrder+orderID}`, {headers: headers});
 
+  }
+
+  createPortfolio(data:any): Observable<any>{
+    console.log("In Get Order by ID");
+
+    const sessionData = sessionStorage.getItem('accessToken');
+    console.log(sessionData);
+
+    let headers = ({
+      'Authorization': 'Bearer ' + sessionData,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+    });
+
+    console.log(";;;;;;;");
+    console.log(headers);
+    return this.http.post(`${createPortfolio}`,data, {headers: headers});
   }
 }

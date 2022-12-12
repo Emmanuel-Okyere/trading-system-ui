@@ -10,5 +10,5 @@ export const getOrderById = `http://localhost:8083/api/v1/order/`;
 export const getUsersOrders = `http://localhost:8083/api/v1/portfolio/`;
 export const deletePortfolio = `http://localhost:8083/api/v1/order/`;
 export const cancelOrder = `http://localhost:8083/api/v1/order/`;
-export const createPortfolio = `http://localhost:8083/api/v1//api/v1/portfolio`;
+export const createPortfolio = `http://localhost:8083/api/v1/portfolio`;
 export const placeOrderUrl = `http://localhost:8083/api/v1/order`;
