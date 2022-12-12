@@ -21,14 +21,26 @@ export class OrderDetailsModalComponent  {
   getOrdersByID(orderId:string){
     console.log("Come and see me");
     console.log(this.data);
-    console.log("*****************************************************");
     console.log(orderId);
     this.authService.getOrderByID(orderId).subscribe(results => {
       this.order = results;
-      this.orderDetails = this.order.data;
+      this.orderDetails = this.order;
       console.log("poooolll");
       console.log(this.orderDetails);
       console.log("oojsdifsadf");
     });
+  }
+
+  cancelOrder(orderID: string) {
+    this.authService.cancelOrderByID(orderID).subscribe(result =>{
+      if(result.status =="00"){
+        alert(result.message)
+        this.dialogRef.closeAll();
+      }
+      else {
+        alert(result.message)
+        this.dialogRef.closeAll();
+      }
+    })
   }
 }

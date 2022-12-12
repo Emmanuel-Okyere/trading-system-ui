@@ -68,6 +68,8 @@
                     >
                     <span *ngIf="orderDetails.orderStatus==='open'" class="mb-2 text-xs badge badge-sm bg-gradient-success">STATUS: {{orderDetails.orderStatus}}ED</span>
                     <span *ngIf="orderDetails.orderStatus==='close'" class="mb-2 text-xs badge badge-sm bg-gradient-secondary">STATUS: {{orderDetails.orderStatus}}D</span>
+                    <span *ngIf="orderDetails.orderStatus==='open'" class="mb-2 text-xs badge badge-sm bg-gradient-danger" style="cursor: pointer" (click)="cancelOrder(orderDetails.orderID)">CANCEL ORDER</span>
+                    <span *ngIf="orderDetails.orderStatus==='close'" class="mb-2 text-xs badge badge-sm bg-gradient-light" style="cursor: not-allowed">CANCEL ORDER</span>
                   </div>
                 </li>
               </ul>

@@ -7,7 +7,7 @@ import {
   getMarketDataUrl,
   getUserPortfolioUrl,
   placeOrderUrl,
-  getUsersOrders, getOrderById
+  getUsersOrders, getOrderById, cancelOrder
 } from 'src/constants/environment';
 
 @Injectable({
@@ -114,6 +114,25 @@ export class AuthServiceService {
     console.log(headers);
 
     return this.http.get(`${getOrderById+orderId}`, {headers: headers});
+
+  }
+
+  cancelOrderByID(orderID: string): Observable<any> {
+    console.log("In Get Order by ID");
+
+    const sessionData = sessionStorage.getItem('accessToken');
+    console.log(sessionData);
+
+    let headers = ({
+      'Authorization': 'Bearer ' + sessionData,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+    });
+
+    console.log(";;;;;;;");
+    console.log(headers);
+
+    return this.http.delete(`${cancelOrder+orderID}`, {headers: headers});
 
   }
 }
