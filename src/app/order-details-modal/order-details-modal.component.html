@@ -1,11 +1,11 @@
-<div class="card h-200">
+<div class="card h-200 w-full" style="width:31vw; height: 38vw;" >
   <div class="card-header pb-0 p-3">
     <div class="row">
       <div class="col-md-4 text-end">
       </div>
     </div>
   </div>
-  <div class="card-body">
+  <div class="card-body" >
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-lg-8">
@@ -14,9 +14,11 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-7 mt-4">
-          <div class="card">
+       <div class="row">
+        <div class="mt-4">
+          <div class="card" style="
+    margin-top: 40px;
+">
             <div class="card-header pb-0 px-3">
               <h2 class="mb-0">Order Details</h2>
             </div>
@@ -26,31 +28,46 @@
                   class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg"                >
                   <div class="d-flex flex-column">
                     <h6 class="mb-3 text-sm"></h6>
-                    <span class="mb-2 text-xs"
-                    >Sell Limit:
+                    <span class="mb-2 text-l"><b>TICKER:</b> {{orderDetails.product}}<span class="text-dark font-weight-bold ms-sm-2"></span></span>
+                    <span class="mb-2 text-l"
+                    ><b>ORDER ID:</b> {{orderDetails.orderID}}
                         <span class="text-dark font-weight-bold ms-sm-2"></span>
                       </span>
-                    <span class="mb-2 text-xs"
-                    >Last Traded Price:
+                    <span class="mb-2 text-l"
+                    ><b>QUANTITY:</b> {{orderDetails.quantity}}
                         <span class="text-dark font-weight-bold ms-sm-2"></span>
                       </span>
-                    <span class="mb-2 text-xs"
-                    >Max Price Shift:
+                    <span class="mb-2 text-l"
+                    ><b>CUMULATIVE QUANTITY:</b> {{orderDetails.cumulatitiveQuantity}}
                         <span class="text-dark font-weight-bold ms-sm-2"></span>
                       </span>
-                    <span class="mb-2 text-xs"
-                    >Ask Price:
+                    <span class="mb-2 text-l"
+                    ><b>CUMULATIVE PRICE:</b> {{orderDetails.cumulatitivePrice}}
                         <span class="text-dark font-weight-bold ms-sm-2"></span>
                       </span>
-                    <span class="mb-2 text-xs"
-                    >Buy Limit:
+                    <span class="mb-2 text-l"
+                    ><b>PRICE:</b> {{orderDetails.price}}
                         <span class="text-dark ms-sm-2 font-weight-bold">
                           </span></span
                     >
-                    <span class="text-xs"
-                    >Bid Price:
+                    <span class="mb-2 text-l"
+                    ><b>TYPE:</b> {{orderDetails.orderType}}
                         <span class="text-dark ms-sm-2 font-weight-bold"></span></span
                     >
+                    <span class="mb-2 text-l"
+                    ><b>SIDE:</b> {{orderDetails.side}}
+                        <span class="text-dark ms-sm-2 font-weight-bold"></span></span
+                    >
+                    <span class="mb-2 text-l"
+                    ><b>CREATED AT:</b> {{orderDetails.createdAt}}
+                        <span class="text-dark ms-sm-2 font-weight-bold"></span></span
+                    >
+                    <span class="mb-2 text-l"
+                    ><b>UPDATED AT:</b> {{orderDetails.updatedAt}}
+                        <span class="text-dark ms-sm-2 font-weight-bold"></span></span
+                    >
+                    <span *ngIf="orderDetails.orderStatus==='open'" class="mb-2 text-xs badge badge-sm bg-gradient-success">STATUS: {{orderDetails.orderStatus}}ED</span>
+                    <span *ngIf="orderDetails.orderStatus==='close'" class="mb-2 text-xs badge badge-sm bg-gradient-secondary">STATUS: {{orderDetails.orderStatus}}D</span>
                   </div>
                 </li>
               </ul>

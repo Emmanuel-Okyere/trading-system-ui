@@ -456,8 +456,8 @@
                   <th class="text-uppercase text-secondary text-l font-weight-bolder opacity-7">Ticker</th>
                   <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Order Id</th>
                   <th class="text-uppercase text-secondary text-l font-weight-bolder opacity-7 ps-2">Quantity</th>
-                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Status</th>
-                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Price</th>
+<!--                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Status</th>-->
+<!--                  <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Price</th>-->
                   <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Type</th>
                   <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">Side</th>
                   <th class="text-center text-uppercase text-secondary text-l font-weight-bolder opacity-7">View Details</th>
@@ -466,7 +466,7 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let order of orders">
-                  <td>
+                  <td class="align-middle text-center">
                     <div class="d-flex px-2 py-1">
                       <div>
                         <img src="https://icons.iconarchive.com/icons/matiasam/ios7-style/512/Stock-icon.png" class="avatar avatar-sm me-3" alt="user1">
@@ -476,19 +476,19 @@
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td class="align-middle text-center">
                     <p class="text-xs font-weight-bold mb-0">{{order.orderId}}</p>
                   </td>
-                  <td>
+                  <td class="align-middle text-center">
                     <p class="text-xs font-weight-bold mb-0">{{order.quantity}}</p>
                   </td>
-                  <td class="align-middle text-center text-sm">
-                    <span *ngIf="order.orderStatus==='open'" class="badge badge-sm bg-gradient-success">{{order.orderStatus}}</span>
-                    <span *ngIf="order.orderStatus==='close'" class="badge badge-sm bg-gradient-secondary">{{order.orderStatus}}</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <span class="text-secondary text-xs font-weight-bold">${{order.price}}</span>
-                  </td>
+<!--                  <td class="align-middle text-center text-sm">-->
+<!--                    <span *ngIf="order.orderStatus==='open'" class="badge badge-sm bg-gradient-success">{{order.orderStatus}}</span>-->
+<!--                    <span *ngIf="order.orderStatus==='close'" class="badge badge-sm bg-gradient-secondary">{{order.orderStatus}}</span>-->
+<!--                  </td>-->
+<!--                  <td class="align-middle text-center">-->
+<!--                    <span class="text-secondary text-xs font-weight-bold">${{order.price}}</span>-->
+<!--                  </td>-->
                   <td class="align-middle text-center">
                     <span class="text-secondary text-xs font-weight-bold">{{order.type}}</span>
                   </td>
@@ -496,7 +496,7 @@
                     <span class="text-secondary text-xs font-weight-bold">{{order.side}}</span>
                   </td>
                   <td class="align-middle text-center">
-                    <a class="nav-link text-body p-0"  (click)="openDialog(order.orderId)">
+                    <a class="nav-link text-body p-0" style="cursor: pointer"  (click)="openDialog(order.orderId)">
                       <span class="text-secondary text-xl font-weight-bold">view</span>
                     </a>
                   </td>
