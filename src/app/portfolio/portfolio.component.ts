@@ -12,14 +12,15 @@ export class PortfolioComponent {
   portfolio: any = [];
   portfolios: any = [];
   portfolioName?: String;
-  userDetails?:any = [];
-  static order?:any;
-  static orders?:any;
-  createPortfolio(){
+  userDetails?: any = [];
+  static order?: any;
+  static orders?: any;
+
+  createPortfolio() {
     this.dialogRef.open(CreatePortfolioComponent);
   }
 
-  constructor(private authService: AuthServiceService,private dialogRef : MatDialog){
+  constructor(private authService: AuthServiceService, private dialogRef: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -27,7 +28,7 @@ export class PortfolioComponent {
     this.getUserDetails();
   }
 
-  getUserPortfolio(){
+  getUserPortfolio() {
     console.log("Come and see me");
     this.authService.getUserPortfolio().subscribe(results => {
       this.portfolio = results;
@@ -38,26 +39,40 @@ export class PortfolioComponent {
     });
   }
 
-  getUserDetails(){
+  getUserDetails() {
     console.log("Getting user's details");
-     const userEmail = sessionStorage.getItem("userEmail");
-     const userName = sessionStorage.getItem("userName");
+    const userEmail = sessionStorage.getItem("userEmail");
+    const userName = sessionStorage.getItem("userName");
     const userBalance = sessionStorage.getItem("userBalance");
     const userRole = sessionStorage.getItem("userRole");
-    this.userDetails.push(userEmail,userName,userBalance);
+    this.userDetails.push(userEmail, userName, userBalance);
     console.log(this.userDetails);
   }
 
   getOrders(item: any) {
     console.log("Come and see me");
     console.log("Getting you order for this portfolio");
-    console.log("Haaaayyyy**** "+ item.id);
+    console.log("Haaaayyyy**** " + item.id);
     this.authService.getPortfolioOrders(item.id).subscribe(results => {
       PortfolioComponent.order = results;
       PortfolioComponent.orders = PortfolioComponent.order.data;
       console.log("poooolll");
       console.log(PortfolioComponent.orders);
       console.log("oojsdifsadf");
+    });
+  }
+
+  deletePortfolio(portfolioId: any) {
+    console.log("Come and see me");
+    console.log("Getting you order for this portfolio");
+    console.log("Haaaayyyy**** " + portfolioId);
+    this.authService.deletePortfolio(portfolioId).subscribe(results => {
+      if (results.status=="00"){
+        alert(results.message)
+      }
+      else{
+        alert(results.message)
+      }
     });
   }
 }

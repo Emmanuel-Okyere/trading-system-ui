@@ -7,7 +7,7 @@ import {
   getMarketDataUrl,
   getUserPortfolioUrl,
   placeOrderUrl,
-  getUsersOrders, getOrderById, cancelOrder, createPortfolio
+  getUsersOrders, getOrderById, cancelOrder, createPortfolio, deletePortfolio
 } from 'src/constants/environment';
 import {FormControl, ɵFormGroupValue, ɵTypedOrUntyped} from "@angular/forms";
 
@@ -152,5 +152,20 @@ export class AuthServiceService {
     console.log(";;;;;;;");
     console.log(headers);
     return this.http.post(`${createPortfolio}`,data, {headers: headers});
+  }
+
+  deletePortfolio(portfolioId: any): Observable<any> {
+    const sessionData = sessionStorage.getItem('accessToken');
+    console.log(sessionData);
+
+    let headers = ({
+      'Authorization': 'Bearer ' + sessionData,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+    });
+
+    console.log(";;;;;;;");
+    console.log(headers);
+    return this.http.delete(`${deletePortfolio+portfolioId}`, {headers: headers});
   }
 }
