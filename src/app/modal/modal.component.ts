@@ -20,9 +20,9 @@ export class ModalComponent implements OnInit{
   }
 
   tradeFormGroup = new FormGroup({
-    product: new FormControl({value: this.data.name, disabled: false}),
-    quantity: new FormControl(""),
-    price: new FormControl(""),
+    product: new FormControl({value: this.data.name.TICKER, disabled: false}),
+    quantity: new FormControl("500"),
+    price: new FormControl({value: this.data.name.ASK_PRICE, disabled: false}),
     side: new FormControl(""),
     type: new FormControl(""),
     portfolioId: new FormControl("")
